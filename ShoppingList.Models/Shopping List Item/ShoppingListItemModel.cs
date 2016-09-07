@@ -9,6 +9,8 @@ namespace ShoppingList.Models
 
         public int ShoppingListId { get; set; }
 
+        [Required]
+        [MaxLength(8000)]
         public string Content { get; set; }
 
         public enum Priority
