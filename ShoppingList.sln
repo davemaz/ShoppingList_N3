@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Services", "Sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Models", "ShoppingList.Models\ShoppingList.Models.csproj", "{9B417E85-1DA7-483B-BB6B-D4220AFAD9CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingNote.Data", "ShoppingNote.Data\ShoppingNote.Data.csproj", "{2AFC56D5-A49A-4A17-8A82-F211DD461932}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Data", "ShoppingNote.Data\ShoppingList.Data.csproj", "{2AFC56D5-A49A-4A17-8A82-F211DD461932}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

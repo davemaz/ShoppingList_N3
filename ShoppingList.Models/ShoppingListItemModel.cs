@@ -34,7 +34,7 @@ namespace ShoppingList.Models
         //may or may not need to string and navigation property.
         public override string ToString()
         {
-            return $"[{ShoppingListItemId}]";
+            return $"[{ShoppingListId}]";
         }
 
         public virtual ShoppingListModel ShoppingListModel { get; set; }
