@@ -27,6 +27,8 @@ namespace ShoppingList.Models
 
         public DateTimeOffset ModifiedUtc { get; set; }
 
+
+        //may or may not need to string and navigation property.
         public override string ToString()
         {
             return $"[{ShoppingListItemId}]";
