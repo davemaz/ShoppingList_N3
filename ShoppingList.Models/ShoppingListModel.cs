@@ -17,6 +17,8 @@ namespace ShoppingList.Models
 
         public DateTimeOffset ModifiedUtc { get; set; }
 
+        //may or may not need ToString or public virtual collection: To Be Determined.
+
         public override string ToString()
         {
             return $"[{ShoppingListId}] {Name}";
