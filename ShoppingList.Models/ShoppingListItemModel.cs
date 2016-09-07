@@ -26,7 +26,7 @@ namespace ShoppingList.Models
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
 
-        public DateTimeOffset ModifiedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
 
 
         //may or may not need to string and navigation property.
