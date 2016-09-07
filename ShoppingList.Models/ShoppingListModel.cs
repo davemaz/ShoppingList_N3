@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShoppingList.Models
 {
@@ -13,6 +14,7 @@ namespace ShoppingList.Models
 
         public string Color { get; set; }
 
+        [Display (Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset ModifiedUtc { get; set; }

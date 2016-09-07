@@ -23,6 +23,7 @@ namespace ShoppingList.Models
 
         public bool IsChecked { get; set; }
 
+        [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset ModifiedUtc { get; set; }
@@ -35,5 +36,6 @@ namespace ShoppingList.Models
         }
 
         public virtual ShoppingListModel ShoppingListModel { get; set; }
+        
     }
 }
