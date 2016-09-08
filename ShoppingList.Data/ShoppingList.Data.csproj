@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2AFC56D5-A49A-4A17-8A82-F211DD461932}</ProjectGuid>
+    <ProjectGuid>{5646E315-1876-4E45-8AA4-E71ABAF27172}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ShoppingNote.Data</RootNamespace>
-    <AssemblyName>ShoppingNote.Data</AssemblyName>
+    <RootNamespace>ShoppingList.Data</RootNamespace>
+    <AssemblyName>ShoppingList.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
