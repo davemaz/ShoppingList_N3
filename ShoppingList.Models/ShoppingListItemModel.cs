@@ -13,8 +13,11 @@ namespace ShoppingList.Models
         [MaxLength(8000)]
         public string Content { get; set; }
 
-        //created separate file for enum.
+      //created separate file for enum.
         public Priority Priority { get; set; }
+
+        [MaxLength(8000)]
+        public string Note { get; set; }
 
         public bool IsChecked { get; set; }
 
