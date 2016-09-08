@@ -8,15 +8,8 @@ namespace ShoppingList.Models
         [MaxLength(8000)]
         public string Content { get; set; }
 
-        public enum Priority
-        {   
-            [Display (Name = "It Can Wait")]
-            ItCanWait = 0,
-            [Display(Name="Need It Soon")]
-            NeedItSoon = 1,
-            [Display(Name="Get It Now!")]
-            GetItNow = 2,
-        }
+        //created separate file for enum.
+        public Priority Priority { get; set; }
         
     }
 }
