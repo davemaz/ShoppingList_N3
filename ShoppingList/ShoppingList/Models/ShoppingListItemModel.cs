@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShoppingList.Models
 {
     public class ShoppingListItemModel
     {
-        public int ShoppingListItemId { get; set; }
-
+        [Key]
+        public int ShoppingListItemModelId { get; set; }
+        
         public int ShoppingListId { get; set; }
 
         [Required]
@@ -35,9 +37,9 @@ namespace ShoppingList.Models
 
         public override string ToString()
         {
-            return $"[{ShoppingListId}]";
+            return $"[{ShoppingListItemModelId}]";
         }
-
+        
         public virtual ShoppingListModel ShoppingListModel { get; set; }
 
     }
