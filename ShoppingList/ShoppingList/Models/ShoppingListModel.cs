@@ -6,7 +6,8 @@ namespace ShoppingList.Models
 {
     public class ShoppingListModel
     {
-        public int ShoppingListId { get; set; }
+        [Key]
+        public int ShoppingListModelId { get; set; }
 
         public int UserId { get; set; }
 
@@ -22,7 +23,7 @@ namespace ShoppingList.Models
 
         public override string ToString()
         {
-            return $"[{ShoppingListId}] {Name}";
+            return $"[{ShoppingListModelId}] {Name}";
         }
 
         public virtual ICollection<ShoppingListItemModel> ShoppingListItemModels { get; set; }

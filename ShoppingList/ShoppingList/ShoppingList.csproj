@@ -170,6 +170,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ShoppingListItemModelController.cs" />
+    <Compile Include="Controllers\ShoppingListModelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +238,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ShoppingListModel\Create.cshtml" />
+    <Content Include="Views\ShoppingListModel\Delete.cshtml" />
+    <Content Include="Views\ShoppingListModel\Details.cshtml" />
+    <Content Include="Views\ShoppingListModel\Edit.cshtml" />
+    <Content Include="Views\ShoppingListModel\Index.cshtml" />
+    <Content Include="Views\ShoppingListItemModel\Create.cshtml" />
+    <Content Include="Views\ShoppingListItemModel\Delete.cshtml" />
+    <Content Include="Views\ShoppingListItemModel\Details.cshtml" />
+    <Content Include="Views\ShoppingListItemModel\Edit.cshtml" />
+    <Content Include="Views\ShoppingListItemModel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
