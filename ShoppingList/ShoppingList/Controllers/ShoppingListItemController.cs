@@ -37,15 +37,22 @@ namespace ShoppingList.Controllers
             return View();
         }
 
+
+
         // POST: ShoppingListItemModel/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ShoppingListItemModelId,ShoppingListId,Content,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItem shoppingListItemModel)
+        [Route("/ShoppingList/details/{id:int}/CreateItem")]
+        public ActionResult Create(
+            [Bind(Include = "Content,Note,IsChecked,CreatedUtc,ModifiedUtc")]
+                ShoppingListItem shoppingListItemModel, 
+            int id)
         {
             if (ModelState.IsValid)
             {
+                shoppingListItemModel.ShoppingListId = id;
                 db.ShoppingListItems.Add(shoppingListItemModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");

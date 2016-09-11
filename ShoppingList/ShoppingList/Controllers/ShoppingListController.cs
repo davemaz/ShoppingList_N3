@@ -19,6 +19,8 @@ namespace ShoppingList.Controllers
         // GET: ShoppingListModel/Details/5
         public ActionResult Details(int? id)
         {
+
+            //replace with shoppinglistitem index
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -28,6 +30,8 @@ namespace ShoppingList.Controllers
             {
                 return HttpNotFound();
             }
+
+            var i = new ShoppingListItem {ShoppingListId = id.Value};
             return View(shoppingListModel);
         }
 
@@ -53,6 +57,8 @@ namespace ShoppingList.Controllers
 
             return View(shoppingListModel);
         }
+
+        //copy and paste both create methods from shoppinglistitem to create a list item
 
         // GET: ShoppingListModel/Edit/5
         public ActionResult Edit(int? id)
