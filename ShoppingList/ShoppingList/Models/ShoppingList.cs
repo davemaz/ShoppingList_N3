@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShoppingList.Models
 {
-    public class ShoppingListModel
+    public class ShoppingList
     {
         [Key]
         public int ShoppingListModelId { get; set; }
@@ -26,6 +26,6 @@ namespace ShoppingList.Models
             return $"[{ShoppingListModelId}] {Name}";
         }
 
-        public virtual ICollection<ShoppingListItemModel> ShoppingListItemModels { get; set; }
+        public virtual ICollection<ShoppingListItem> ShoppingListItemModels { get; set; }
     }
 }

@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using ShoppingList.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using ShoppingList.Models;
 
 namespace ShoppingList.Controllers
 {
-    public class ShoppingListItemModelController : Controller
+    public class ShoppingListItemController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ShoppingListItemModel
         public ActionResult Index()
         {
-            return View(db.ShoppingListItemModels.ToList());
+            return View(db.ShoppingListItems.ToList());
         }
 
         // GET: ShoppingListItemModel/Details/5
@@ -27,7 +23,7 @@ namespace ShoppingList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShoppingListItemModel shoppingListItemModel = db.ShoppingListItemModels.Find(id);
+            ShoppingListItem shoppingListItemModel = db.ShoppingListItems.Find(id);
             if (shoppingListItemModel == null)
             {
                 return HttpNotFound();
@@ -46,11 +42,11 @@ namespace ShoppingList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ShoppingListItemModelId,ShoppingListId,Content,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItemModel shoppingListItemModel)
+        public ActionResult Create([Bind(Include = "ShoppingListItemModelId,ShoppingListId,Content,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItem shoppingListItemModel)
         {
             if (ModelState.IsValid)
             {
-                db.ShoppingListItemModels.Add(shoppingListItemModel);
+                db.ShoppingListItems.Add(shoppingListItemModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +61,7 @@ namespace ShoppingList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShoppingListItemModel shoppingListItemModel = db.ShoppingListItemModels.Find(id);
+            ShoppingListItem shoppingListItemModel = db.ShoppingListItems.Find(id);
             if (shoppingListItemModel == null)
             {
                 return HttpNotFound();
@@ -78,7 +74,7 @@ namespace ShoppingList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ShoppingListItemModelId,ShoppingListId,Content,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItemModel shoppingListItemModel)
+        public ActionResult Edit([Bind(Include = "ShoppingListItemModelId,ShoppingListId,Content,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItem shoppingListItemModel)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +92,7 @@ namespace ShoppingList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShoppingListItemModel shoppingListItemModel = db.ShoppingListItemModels.Find(id);
+            ShoppingListItem shoppingListItemModel = db.ShoppingListItems.Find(id);
             if (shoppingListItemModel == null)
             {
                 return HttpNotFound();
@@ -109,8 +105,8 @@ namespace ShoppingList.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ShoppingListItemModel shoppingListItemModel = db.ShoppingListItemModels.Find(id);
-            db.ShoppingListItemModels.Remove(shoppingListItemModel);
+            ShoppingListItem shoppingListItemModel = db.ShoppingListItems.Find(id);
+            db.ShoppingListItems.Remove(shoppingListItemModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

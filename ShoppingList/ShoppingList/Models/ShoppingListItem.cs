@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShoppingList.Models
 {
-    public class ShoppingListItemModel
+    public class ShoppingListItem
     {
         [Key]
         public int ShoppingListItemModelId { get; set; }
@@ -40,7 +39,7 @@ namespace ShoppingList.Models
             return $"[{ShoppingListItemModelId}]";
         }
         
-        public virtual ShoppingListModel ShoppingListModel { get; set; }
+        public virtual ShoppingList ShoppingListModel { get; set; }
 
     }
 }

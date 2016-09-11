@@ -6,14 +6,14 @@ using System.Web.Mvc;
 
 namespace ShoppingList.Controllers
 {
-    public class ShoppingListModelController : Controller
+    public class ShoppingListController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ShoppingListModel
         public ActionResult Index()
         {
-            return View(db.ShoppingListModels.ToList());
+            return View(db.ShoppingLists.ToList());
         }
 
         // GET: ShoppingListModel/Details/5
@@ -23,7 +23,7 @@ namespace ShoppingList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShoppingListModel shoppingListModel = db.ShoppingListModels.Find(id);
+            Models.ShoppingList shoppingListModel = db.ShoppingLists.Find(id);
             if (shoppingListModel == null)
             {
                 return HttpNotFound();
@@ -42,11 +42,11 @@ namespace ShoppingList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ShoppingListModelId,UserId,Name,Color,CreatedUtc,ModifiedUtc")] ShoppingListModel shoppingListModel)
+        public ActionResult Create([Bind(Include = "ShoppingListModelId,UserId,Name,Color,CreatedUtc,ModifiedUtc")] Models.ShoppingList shoppingListModel)
         {
             if (ModelState.IsValid)
             {
-                db.ShoppingListModels.Add(shoppingListModel);
+                db.ShoppingLists.Add(shoppingListModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -61,7 +61,7 @@ namespace ShoppingList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShoppingListModel shoppingListModel = db.ShoppingListModels.Find(id);
+            Models.ShoppingList shoppingListModel = db.ShoppingLists.Find(id);
             if (shoppingListModel == null)
             {
                 return HttpNotFound();
@@ -74,7 +74,7 @@ namespace ShoppingList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ShoppingListModelId,UserId,Name,Color,CreatedUtc,ModifiedUtc")] ShoppingListModel shoppingListModel)
+        public ActionResult Edit([Bind(Include = "ShoppingListModelId,UserId,Name,Color,CreatedUtc,ModifiedUtc")] Models.ShoppingList shoppingListModel)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace ShoppingList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShoppingListModel shoppingListModel = db.ShoppingListModels.Find(id);
+            Models.ShoppingList shoppingListModel = db.ShoppingLists.Find(id);
             if (shoppingListModel == null)
             {
                 return HttpNotFound();
@@ -105,8 +105,8 @@ namespace ShoppingList.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ShoppingListModel shoppingListModel = db.ShoppingListModels.Find(id);
-            db.ShoppingListModels.Remove(shoppingListModel);
+            Models.ShoppingList shoppingListModel = db.ShoppingLists.Find(id);
+            db.ShoppingLists.Remove(shoppingListModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
