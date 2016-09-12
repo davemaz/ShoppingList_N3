@@ -46,7 +46,7 @@ namespace ShoppingList.Controllers
         [ValidateAntiForgeryToken]
         [Route("/ShoppingList/details/{id:int}/CreateItem")]
         public ActionResult Create(
-            [Bind(Include = "Content,Note,IsChecked,CreatedUtc,ModifiedUtc")]
+            [Bind(Include = "Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")]
                 ShoppingListItem shoppingListItemModel, 
             int id)
         {
@@ -81,7 +81,7 @@ namespace ShoppingList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ShoppingListItemModelId,ShoppingListId,Content,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItem shoppingListItemModel)
+        public ActionResult Edit([Bind(Include = "ShoppingListItemModelId,ShoppingListId,Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItem shoppingListItemModel)
         {
             if (ModelState.IsValid)
             {
