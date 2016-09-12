@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShoppingList.Models
 {
-    public class ShoppingListItemModel
+    public class ShoppingListItem
     {
         [Key]
         public int ShoppingListItemModelId { get; set; }
@@ -15,16 +14,8 @@ namespace ShoppingList.Models
         [MaxLength(8000)]
         public string Content { get; set; }
 
-        public enum Priority
-        {
-            [Display(Name = "It Can Wait.")]
-            ItCanWait = 0,
-            [Display(Name = "Need It Soon")]
-            NeedItSoon = 1,
-            [Display(Name = "Get It Now!")]
-            GetItNow = 2
-        }
-
+        public Priority Priority { get; set; }
+        
         [MaxLength(8000)]
         public string Note { get; set; }
 
@@ -40,7 +31,7 @@ namespace ShoppingList.Models
             return $"[{ShoppingListItemModelId}]";
         }
         
-        public virtual ShoppingListModel ShoppingListModel { get; set; }
+        public virtual ShoppingList ShoppingListModel { get; set; }
 
     }
 }
