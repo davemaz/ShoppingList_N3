@@ -34,32 +34,31 @@ namespace ShoppingList.Migrations
                 "dbo.ShoppingListItem",
                 c => new
                     {
-                        ShoppingListItemModelId = c.Int(nullable: false, identity: true),
+                        ShoppingListItemId = c.Int(nullable: false, identity: true),
                         ShoppingListId = c.Int(nullable: false),
-                        Content = c.String(nullable: false),
+                        Content = c.String(nullable: false, maxLength: 25),
                         Priority = c.Int(nullable: false),
-                        Note = c.String(),
+                        Note = c.String(maxLength: 25),
                         IsChecked = c.Boolean(nullable: false),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
-                        ShoppingListModel_ShoppingListModelId = c.Int(),
                     })
-                .PrimaryKey(t => t.ShoppingListItemModelId)
-                .ForeignKey("dbo.ShoppingList", t => t.ShoppingListModel_ShoppingListModelId)
-                .Index(t => t.ShoppingListModel_ShoppingListModelId);
+                .PrimaryKey(t => t.ShoppingListItemId)
+                .ForeignKey("dbo.ShoppingList", t => t.ShoppingListId, cascadeDelete: true)
+                .Index(t => t.ShoppingListId);
             
             CreateTable(
                 "dbo.ShoppingList",
                 c => new
                     {
-                        ShoppingListModelId = c.Int(nullable: false, identity: true),
-                        UserId = c.Int(nullable: false),
-                        Name = c.String(nullable: false),
+                        ShoppingListId = c.Int(nullable: false, identity: true),
+                        UserId = c.Int(),
+                        Name = c.String(nullable: false, maxLength: 25),
                         Color = c.String(),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
                     })
-                .PrimaryKey(t => t.ShoppingListModelId);
+                .PrimaryKey(t => t.ShoppingListId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -113,12 +112,12 @@ namespace ShoppingList.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.ShoppingListItem", "ShoppingListModel_ShoppingListModelId", "dbo.ShoppingList");
+            DropForeignKey("dbo.ShoppingListItem", "ShoppingListId", "dbo.ShoppingList");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.ShoppingListItem", new[] { "ShoppingListModel_ShoppingListModelId" });
+            DropIndex("dbo.ShoppingListItem", new[] { "ShoppingListId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
