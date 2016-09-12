@@ -1,8 +1,12 @@
-﻿using ShoppingList.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using ShoppingList.Models;
 
 namespace ShoppingList.Controllers
 {
@@ -10,110 +14,103 @@ namespace ShoppingList.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: ShoppingListItemModel
+        // GET: ShoppingListItem
         public ActionResult Index()
         {
             return View(db.ShoppingListItems.ToList());
         }
 
-        // GET: ShoppingListItemModel/Details/5
+        // GET: ShoppingListItem/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShoppingListItem shoppingListItemModel = db.ShoppingListItems.Find(id);
-            if (shoppingListItemModel == null)
+            ShoppingListItem shoppingListItem = db.ShoppingListItems.Find(id);
+            if (shoppingListItem == null)
             {
                 return HttpNotFound();
             }
-            return View(shoppingListItemModel);
+            return View(shoppingListItem);
         }
 
-        // GET: ShoppingListItemModel/Create
+        // GET: ShoppingListItem/Create
         public ActionResult Create()
         {
             return View();
         }
 
-
-
-        // POST: ShoppingListItemModel/Create
+        // POST: ShoppingListItem/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("/ShoppingList/details/{id:int}/CreateItem")]
-        public ActionResult Create(
-            [Bind(Include = "Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")]
-                ShoppingListItem shoppingListItemModel, 
-            int id)
+        public ActionResult Create([Bind(Include = "ShoppingListItemModelId,ShoppingListId,Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItem shoppingListItem)
         {
             if (ModelState.IsValid)
             {
-                shoppingListItemModel.ShoppingListId = id;
-                db.ShoppingListItems.Add(shoppingListItemModel);
+                db.ShoppingListItems.Add(shoppingListItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(shoppingListItemModel);
+            return View(shoppingListItem);
         }
 
-        // GET: ShoppingListItemModel/Edit/5
+        // GET: ShoppingListItem/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShoppingListItem shoppingListItemModel = db.ShoppingListItems.Find(id);
-            if (shoppingListItemModel == null)
+            ShoppingListItem shoppingListItem = db.ShoppingListItems.Find(id);
+            if (shoppingListItem == null)
             {
                 return HttpNotFound();
             }
-            return View(shoppingListItemModel);
+            return View(shoppingListItem);
         }
 
-        // POST: ShoppingListItemModel/Edit/5
+        // POST: ShoppingListItem/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ShoppingListItemModelId,ShoppingListId,Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItem shoppingListItemModel)
+        public ActionResult Edit([Bind(Include = "ShoppingListItemModelId,ShoppingListId,Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItem shoppingListItem)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(shoppingListItemModel).State = EntityState.Modified;
+                db.Entry(shoppingListItem).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(shoppingListItemModel);
+            return View(shoppingListItem);
         }
 
-        // GET: ShoppingListItemModel/Delete/5
+        // GET: ShoppingListItem/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ShoppingListItem shoppingListItemModel = db.ShoppingListItems.Find(id);
-            if (shoppingListItemModel == null)
+            ShoppingListItem shoppingListItem = db.ShoppingListItems.Find(id);
+            if (shoppingListItem == null)
             {
                 return HttpNotFound();
             }
-            return View(shoppingListItemModel);
+            return View(shoppingListItem);
         }
 
-        // POST: ShoppingListItemModel/Delete/5
+        // POST: ShoppingListItem/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ShoppingListItem shoppingListItemModel = db.ShoppingListItems.Find(id);
-            db.ShoppingListItems.Remove(shoppingListItemModel);
+            ShoppingListItem shoppingListItem = db.ShoppingListItems.Find(id);
+            db.ShoppingListItems.Remove(shoppingListItem);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
