@@ -1,7 +1,8 @@
 namespace ShoppingList.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
-
+    
     public partial class Init : DbMigration
     {
         public override void Up()
@@ -36,6 +37,7 @@ namespace ShoppingList.Migrations
                         ShoppingListItemModelId = c.Int(nullable: false, identity: true),
                         ShoppingListId = c.Int(nullable: false),
                         Content = c.String(nullable: false),
+                        Priority = c.Int(nullable: false),
                         Note = c.String(),
                         IsChecked = c.Boolean(nullable: false),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),

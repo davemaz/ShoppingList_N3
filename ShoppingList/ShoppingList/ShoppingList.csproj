@@ -175,13 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609112134177_init.cs" />
-    <Compile Include="Migrations\201609112134177_init.Designer.cs">
-      <DependentUpon>201609112134177_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609121546038_Priority.cs" />
-    <Compile Include="Migrations\201609121546038_Priority.Designer.cs">
-      <DependentUpon>201609121546038_Priority.cs</DependentUpon>
+    <Compile Include="Migrations\201609121651141_Init.cs" />
+    <Compile Include="Migrations\201609121651141_Init.Designer.cs">
+      <DependentUpon>201609121651141_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -196,6 +192,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapOldVersion.css" />
+    <Content Include="Content\bootstrapOldVersion.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -271,11 +269,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609112134177_init.resx">
-      <DependentUpon>201609112134177_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609121546038_Priority.resx">
-      <DependentUpon>201609121546038_Priority.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609121651141_Init.resx">
+      <DependentUpon>201609121651141_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
