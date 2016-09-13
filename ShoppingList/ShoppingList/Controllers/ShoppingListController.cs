@@ -35,6 +35,26 @@ namespace ShoppingList.Controllers
             return View(shoppingListModel);
         }
 
+        //adding ViewIndex to ShoppingListController
+
+        public ActionResult ViewIndex(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Models.ShoppingList shoppingListIndex = db.ShoppingLists.Find(id);
+            if (shoppingListIndex == null)
+            {
+                return HttpNotFound();
+            }
+            
+            return View(db.ShoppingListItems.ToList());
+        }
+
+
+
         // GET: ShoppingListModel/Create
         public ActionResult Create()
         {
