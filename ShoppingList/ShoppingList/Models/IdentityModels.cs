@@ -39,6 +39,10 @@ namespace ShoppingList.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            //modelBuilder.Entity<ShoppingList>()
+            //    .HasMany(s => s.ShoppingListItems)
+            //    .WithOptional()
+            //    .WillCascadeOnDelete();
         }
 
     }

@@ -31,7 +31,7 @@ namespace ShoppingList.Controllers
                 return HttpNotFound();
             }
 
-            var i = new ShoppingListItem {ShoppingListId = id.Value};
+            //var i = new ShoppingListItem {ShoppingListId = id.Value};
             return View(shoppingListModel);
         }
 
@@ -46,7 +46,7 @@ namespace ShoppingList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ShoppingListModelId,UserId,Name,Color,CreatedUtc,ModifiedUtc")] Models.ShoppingList shoppingListModel)
+        public ActionResult Create([Bind(Include = "ShoppingListId,UserId,Name,Color,CreatedUtc,ModifiedUtc")] Models.ShoppingList shoppingListModel)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace ShoppingList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ShoppingListModelId,UserId,Name,Color,CreatedUtc,ModifiedUtc")] Models.ShoppingList shoppingListModel)
+        public ActionResult Edit([Bind(Include = "ShoppingListId,UserId,Name,Color,CreatedUtc,ModifiedUtc")] Models.ShoppingList shoppingListModel)
         {
             if (ModelState.IsValid)
             {
