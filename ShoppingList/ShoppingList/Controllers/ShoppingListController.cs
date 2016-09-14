@@ -55,10 +55,31 @@ namespace ShoppingList.Controllers
             //return View(shoppingListIndex.ShoppingListItems);
 
             return View(db.ShoppingListItems.Where(s => s.ShoppingListId == id));
-
-
         }
 
+
+        // GET: ShoppingListItem/Create
+        public ActionResult CreateItem(int? id)
+        {
+            return View();
+        }
+
+        // POST: ShoppingListItem/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ShoppingListItemId,ShoppingListId,Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItem shoppingListItem)
+        {
+            if (ModelState.IsValid)
+            {
+                db.ShoppingListItems.Add(shoppingListItem);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(shoppingListItem);
+        }
 
 
         // GET: ShoppingListModel/Create
