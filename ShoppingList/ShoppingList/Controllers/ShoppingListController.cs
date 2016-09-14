@@ -55,7 +55,9 @@ namespace ShoppingList.Controllers
             ////shopping lists with a specific ID as found above - display shopping list items from that list.
             //return View(shoppingListIndex.ShoppingListItems);
 
+            ViewBag.ShoppingListId = id;
             return View(db.ShoppingListItems.Where(s => s.ShoppingListId == id));
+
         }
 
 
