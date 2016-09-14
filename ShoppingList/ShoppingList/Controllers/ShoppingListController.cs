@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
+
 namespace ShoppingList.Controllers
 {
     public class ShoppingListController : Controller
@@ -13,6 +14,7 @@ namespace ShoppingList.Controllers
         // GET: ShoppingListModel
         public ActionResult Index()
         {
+            //var shoppingListItems = db.ShoppingListItems.Include(s => s.ShoppingList);
             return View(db.ShoppingLists.ToList());
         }
 
@@ -34,6 +36,55 @@ namespace ShoppingList.Controllers
             //var i = new ShoppingListItem {ShoppingListId = id.Value};
             return View(shoppingListModel);
         }
+
+        //adding ViewIndex to ShoppingListController
+
+        public ActionResult ViewIndex(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //shoppinglistitems, reference shoppinglistitems in db with shoppinglistIDs that match that id submitted
+            //Models.ShoppingList shoppingListIndex = db.ShoppingLists.Find(id);
+            //if (shoppingListIndex == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            ////shopping lists with a specific ID as found above - display shopping list items from that list.
+            //return View(shoppingListIndex.ShoppingListItems);
+
+            return View(db.ShoppingListItems.Where(s => s.ShoppingListId == id));
+        }
+
+
+        // GET: ShoppingListItem/Create
+        public ActionResult CreateItem(int? id)
+        {
+            return View();
+        }
+
+        // POST: ShoppingList/CreateItem
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateItem([Bind(Include = "ShoppingListItemId,ShoppingListId," +
+                                                       "Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")]
+                                                        ShoppingListItem shoppingListItem, int id)
+        {   //added parameter int id to "create".
+            if (ModelState.IsValid)
+            {   //add shoppinglistitems to a particular list prior to "add"
+                shoppingListItem.ShoppingListId = id;
+                db.ShoppingListItems.Add(shoppingListItem);
+                db.SaveChanges();
+                return RedirectToAction("ViewIndex", new {id});
+            }
+            //trying to return to view of shopping list items on a particular list
+            return View();
+        }
+
 
         // GET: ShoppingListModel/Create
         public ActionResult Create()
