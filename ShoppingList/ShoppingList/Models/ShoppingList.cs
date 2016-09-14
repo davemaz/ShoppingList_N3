@@ -7,11 +7,13 @@ namespace ShoppingList.Models
     public class ShoppingList
     {
         [Key]
-        public int ShoppingListModelId { get; set; }
+        public int ShoppingListId { get; set; }
 
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
         [Required]
+        [MinLength(2)]
+        [MaxLength(25)]
         public string Name { get; set; }
 
         public string Color { get; set; }
@@ -23,9 +25,9 @@ namespace ShoppingList.Models
 
         public override string ToString()
         {
-            return $"[{ShoppingListModelId}] {Name}";
+            return $"[{ShoppingListId}] {Name}";
         }
 
-        public virtual ICollection<ShoppingListItem> ShoppingListItemModels { get; set; }
+        public virtual ICollection<ShoppingListItem> ShoppingListItems { get; set; }
     }
 }

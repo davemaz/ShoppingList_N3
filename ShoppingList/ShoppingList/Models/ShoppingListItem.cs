@@ -1,22 +1,26 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShoppingList.Models
 {
     public class ShoppingListItem
     {
         [Key]
-        public int ShoppingListItemModelId { get; set; }
-        
+        public int ShoppingListItemId { get; set; }
+
+        [ForeignKey("ShoppingList")]
         public int ShoppingListId { get; set; }
 
         [Required]
-        [MaxLength(8000)]
+        [MinLength(2)]
+        [MaxLength(25)]
         public string Content { get; set; }
 
         public Priority Priority { get; set; }
         
-        [MaxLength(8000)]
+        [MinLength(2)]
+        [MaxLength(25)]
         public string Note { get; set; }
 
         public bool IsChecked { get; set; }
@@ -28,10 +32,10 @@ namespace ShoppingList.Models
 
         public override string ToString()
         {
-            return $"[{ShoppingListItemModelId}]";
+            return $"[{ShoppingListItemId}]";
         }
         
-        public virtual ShoppingList ShoppingListModel { get; set; }
+        public virtual ShoppingList ShoppingList { get; set; }
 
     }
 }
