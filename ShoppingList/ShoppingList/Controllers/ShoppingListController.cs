@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
+
 namespace ShoppingList.Controllers
 {
     public class ShoppingListController : Controller
@@ -64,21 +65,24 @@ namespace ShoppingList.Controllers
             return View();
         }
 
-        // POST: ShoppingListItem/Create
+        // POST: ShoppingList/CreateItem
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ShoppingListItemId,ShoppingListId,Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")] ShoppingListItem shoppingListItem)
-        {
+        public ActionResult CreateItem([Bind(Include = "ShoppingListItemId,ShoppingListId," +
+                                                       "Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")]
+                                                        ShoppingListItem shoppingListItem, int id)
+        {   //added parameter int id to "create".
             if (ModelState.IsValid)
-            {
+            {   //add shoppinglistitems to a particular list prior to "add"
+                shoppingListItem.ShoppingListId = id;
                 db.ShoppingListItems.Add(shoppingListItem);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ViewIndex", new {id});
             }
-
-            return View(shoppingListItem);
+            //trying to return to view of shopping list items on a particular list
+            return View();
         }
 
 
