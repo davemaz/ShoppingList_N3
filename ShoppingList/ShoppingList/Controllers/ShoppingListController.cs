@@ -13,6 +13,7 @@ namespace ShoppingList.Controllers
         // GET: ShoppingListModel
         public ActionResult Index()
         {
+            //var shoppingListItems = db.ShoppingListItems.Include(s => s.ShoppingList);
             return View(db.ShoppingLists.ToList());
         }
 
@@ -39,18 +40,23 @@ namespace ShoppingList.Controllers
 
         public ActionResult ViewIndex(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            //shoppinglistitems, reference shoppinglistitems in db with shoppinglistIDs that match that id submitted
+            //Models.ShoppingList shoppingListIndex = db.ShoppingLists.Find(id);
+            //if (shoppingListIndex == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            ////shopping lists with a specific ID as found above - display shopping list items from that list.
+            //return View(shoppingListIndex.ShoppingListItems);
 
-            Models.ShoppingList shoppingListIndex = db.ShoppingLists.Find(id);
-            if (shoppingListIndex == null)
-            {
-                return HttpNotFound();
-            }
-            
-            return View(db.ShoppingListItems.ToList());
+            return View(db.ShoppingListItems.Where(s => s.ShoppingListId == id));
+
+
         }
 
 
