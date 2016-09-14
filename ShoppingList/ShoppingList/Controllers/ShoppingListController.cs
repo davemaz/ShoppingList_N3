@@ -62,6 +62,7 @@ namespace ShoppingList.Controllers
         // GET: ShoppingListItem/Create
         public ActionResult CreateItem(int? id)
         {
+            ViewBag.ShoppingListId = id;
             return View();
         }
 
