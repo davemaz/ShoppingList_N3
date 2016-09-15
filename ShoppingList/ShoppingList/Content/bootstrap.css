@@ -11,6 +11,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1126,6 +1127,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  
 }
 .img-rounded {
   border-radius: 6px;
@@ -4018,7 +4020,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a > img {
   max-width: none;
 }
-.nav-tabs {
+.nav-tabs {                 
   border-bottom: 1px solid #dddddd;
 }
 .nav-tabs > li {
@@ -4963,7 +4965,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: transparent;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -4975,13 +4977,11 @@ a.badge:focus {
   font-weight: 200;
 }
 .jumbotron > hr {
-  border-top-color: #d5d5d5;
+  border-top-color:transparent;
 }
 .container .jumbotron,
 .container-fluid .jumbotron {
-  border-radius: 6px;
-  padding-left: 15px;
-  padding-right: 15px;
+ 
 }
 .jumbotron .container {
   max-width: 100%;
@@ -4993,8 +4993,7 @@ a.badge:focus {
   }
   .container .jumbotron,
   .container-fluid .jumbotron {
-    padding-left: 60px;
-    padding-right: 60px;
+   
   }
   .jumbotron h1,
   .jumbotron .h1 {
