@@ -175,9 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609131322578_Init.cs" />
-    <Compile Include="Migrations\201609131322578_Init.Designer.cs">
-      <DependentUpon>201609131322578_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201609141514239_initial.cs" />
+    <Compile Include="Migrations\201609141514239_initial.Designer.cs">
+      <DependentUpon>201609141514239_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -190,10 +190,15 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-ShoppingList-20160909104954.mdf" />
+    <Content Include="App_Data\aspnet-ShoppingList-20160909104954_log.ldf">
+      <DependentUpon>aspnet-ShoppingList-20160909104954.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapOldVersion.css" />
     <Content Include="Content\bootstrapOldVersion.min.css" />
+    <Content Include="Content\img\mountain with cabin.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -259,9 +264,7 @@
     <Content Include="Views\ShoppingListItem\Index.cshtml" />
     <Content Include="Views\ShoppingList\CreateItem.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -271,8 +274,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609131322578_Init.resx">
-      <DependentUpon>201609131322578_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609141514239_initial.resx">
+      <DependentUpon>201609141514239_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
