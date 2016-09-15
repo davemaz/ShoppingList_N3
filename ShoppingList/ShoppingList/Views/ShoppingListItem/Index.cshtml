@@ -4,16 +4,22 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Shopping List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("| Delete Checked |", "Delete")
+    @Html.ActionLink(" Add Item |", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ShoppingListId)
+            Checked
         </th>
+        <!--Being Commenting out the ShoppingListID
+                <th>
+                    @Html.DisplayNameFor(model => model.ShoppingListId)
+                </th>
+        Ending Commenting out the ShoppingListID-->
         <th>
             @Html.DisplayNameFor(model => model.Content)
         </th>
@@ -23,23 +29,32 @@
         <th>
             @Html.DisplayNameFor(model => model.Note)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsChecked)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedUtc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedUtc)
-        </th>
-        <th></th>
+        <!--Beginning Commenting out the Check Box, CreatedUtc, ModifiedUtc
+                <th>
+                    @Html.DisplayNameFor(model => model.IsChecked)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedUtc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModifiedUtc)
+                </th>
+                <th></th>
+        End Commenting out the Check Box, CreatedUtc, ModifiedUtc-->
+                <th>Options
+                </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            <input type="checkbox" name="checked" value="isChecked" checked="checked" />
+        </td>
+<!--Being Commenting out the ShoppingListID
+        <td>
             @Html.DisplayFor(modelItem => item.ShoppingListId)
         </td>
+Ending Commenting out the ShoppingListID-->
         <td>
             @Html.DisplayFor(modelItem => item.Content)
         </td>
@@ -49,6 +64,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Note)
         </td>
+<!--Beginning Commenting out the Check Box, CreatedUtc, ModifiedUtc
         <td>
             @Html.DisplayFor(modelItem => item.IsChecked)
         </td>
@@ -58,9 +74,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.ModifiedUtc)
         </td>
-        <td>
+Ending Commenting out the ShoppingListID-->
+        
+<!--Begin Commenting out the Edit, Details Link
             @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingListItemId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ShoppingListItemId }) |
+End Commenting out the Edit, Details Link -->
+        <td>
             @Html.ActionLink("Delete", "Delete", new { id=item.ShoppingListItemId })
         </td>
     </tr>
