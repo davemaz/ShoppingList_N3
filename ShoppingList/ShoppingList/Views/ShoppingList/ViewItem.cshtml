@@ -37,7 +37,8 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+
+    <tr style="color: @ViewBag.ShoppingListColor">
         <td>
             @Html.DisplayFor(modelItem => item.ShoppingListId)
         </td>

@@ -255,7 +255,7 @@
     <Content Include="Views\ShoppingListItem\Delete.cshtml" />
     <Content Include="Views\ShoppingListItem\Details.cshtml" />
     <Content Include="Views\ShoppingListItem\Edit.cshtml" />
-    <Content Include="Views\ShoppingList\ViewIndex.cshtml" />
+    <Content Include="Views\ShoppingList\ViewItem.cshtml" />
     <Content Include="Views\ShoppingListItem\Index.cshtml" />
     <Content Include="Views\ShoppingList\CreateItem.cshtml" />
   </ItemGroup>
