@@ -66,10 +66,11 @@ namespace ShoppingList.Controllers
         //POST: ViewItem
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public ActionResult ViewItem([Bind())
+        //public ActionResult ViewItem()
 
         //{
-        //    return 
+        //    var shoppingListItem = new ShoppingListItem()
+        //    return View(shoppingListItem);
         //}
 
 
