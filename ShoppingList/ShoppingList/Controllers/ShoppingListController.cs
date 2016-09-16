@@ -37,9 +37,10 @@ namespace ShoppingList.Controllers
             return View(shoppingListModel);
         }
 
-        //adding ViewIndex to ShoppingListController
+        //adding ViewItem to ShoppingListController
 
-        public ActionResult ViewIndex(int? id)
+        // GET: ViewItem/View
+        public ActionResult ViewItem(int? id)
         {
 
             if (id == null)
@@ -55,8 +56,20 @@ namespace ShoppingList.Controllers
             ////shopping lists with a specific ID as found above - display shopping list items from that list.
             //return View(shoppingListIndex.ShoppingListItems);
 
+            ViewBag.ShoppingListId = id;
+            ViewBag.ShoppingListColor = db.ShoppingLists.Find(id).Color; 
             return View(db.ShoppingListItems.Where(s => s.ShoppingListId == id));
+
         }
+
+        //POST: ViewItem
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult ViewItem([Bind())
+
+        //{
+        //    return 
+        //}
 
 
         // GET: ShoppingListItem/Create
@@ -80,7 +93,7 @@ namespace ShoppingList.Controllers
                 shoppingListItem.ShoppingListId = id;
                 db.ShoppingListItems.Add(shoppingListItem);
                 db.SaveChanges();
-                return RedirectToAction("ViewIndex", new {id});
+                return RedirectToAction("ViewItem", new {id});
             }
             //trying to return to view of shopping list items on a particular list
             return View();
