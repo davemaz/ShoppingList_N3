@@ -4,19 +4,22 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Shopping Lists</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add List", "Create")
 </p>
 <table class="table">
     <tr>
+<!--Begin Commenting out the UserId
         <th>
             @Html.DisplayNameFor(model => model.UserId)
         </th>
+End Commenting out the UserID-->
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
+<!--Begin Commenting out the Color, CreatedUtc, ModifiedUtc
         <th>
             @Html.DisplayNameFor(model => model.Color)
         </th>
@@ -27,16 +30,20 @@
             @Html.DisplayNameFor(model => model.ModifiedUtc)
         </th>
         <th></th>
+End Commenting out the Color, CreatedUtc, ModifiedUtc-->
     </tr>
 
 @foreach (var item in Model) {
     <tr style ="color: @item.Color">
+<!--Begin Commenting out the UserId
         <td>
             @Html.DisplayFor(modelItem => item.UserId)
         </td>
+End Commenting out the UserID-->
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
+<!--Begin Commenting out the Color, CreatedUtc, ModifiedUtc
         <td>
             @Html.DisplayFor(modelItem => item.Color)
         </td>
@@ -46,14 +53,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.ModifiedUtc)
         </td>
+End Commenting out the Color, CreatedUtc, ModifiedUtc-->
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ShoppingListId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ShoppingListId }) |
+            <!--Commenting out Edit, Detail Link           @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingListId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ShoppingListId }) |
+        Ending the Commentin for Edit and Details Link-->
+            |
             @Html.ActionLink("Show", "ViewItem", new { id = item.ShoppingListId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ShoppingListId })
-            
-         </td>
-    </tr>
+            @Html.ActionLink("Delete", "Delete", new { id = item.ShoppingListId }) |
+        </td>
+</tr>
 }
 
 </table>
