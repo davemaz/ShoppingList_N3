@@ -6,7 +6,7 @@ namespace ShoppingList.Models
     {
         [Display(Name = "It Can Wait.")]
         Low = 0,
-        [Display(Name = "Need It Soon")]
+        [Display(Name = "Need It Soon.")]
         Moderate = 1,
         [Display(Name = "Get It Now!")]
         High = 2

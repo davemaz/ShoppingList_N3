@@ -9,11 +9,11 @@
 </p>
 <table class="table">
     <tr>
-<!--Commenting out the ShoppingListID
+        <!--Commenting out the ShoppingListID
         <th>
             @Html.DisplayNameFor(model => model.ShoppingListId)
         </th>
-End Commenting out ShoppingListID-->
+        End Commenting out ShoppingListID-->
         <th>
             @Html.DisplayNameFor(model => model.IsChecked)
         </th>
@@ -26,59 +26,91 @@ End Commenting out ShoppingListID-->
         <th>
             @Html.DisplayNameFor(model => model.Note)
         </th>
-<!--Commenting out the CreatedUtc and ModifiedUtc
+        <!--Commenting out the CreatedUtc and ModifiedUtc
         <th>
             @Html.DisplayNameFor(model => model.CreatedUtc)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ModifiedUtc)
         </th>
-End Commenting out the CreatedUtc and ModifiedUtc-->
+        End Commenting out the CreatedUtc and ModifiedUtc-->
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
+    @foreach (var item in Model)
+    {
 
-    <tr style="color: @ViewBag.ShoppingListColor">
-        <!--Commenting out the ShoppingListID
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShoppingListId)
-                </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsChecked)
-        </td>
-        End Commenting out ShoppingListID-->
-        <td>
-            <input type="checkbox" name="checked" value="isChecked" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Priority)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Note)
-        </td>
-        <!--Commenting out the CreatedUtc and ModifiedUtc
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedUtc)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedUtc)
-                </td>
-        End Commenting out ShoppingListID-->
-        <!--Commenting out the Edit and Details Button
-                    @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingListItemId }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.ShoppingListItemId })
-        End Commenting out the Edit and Details Buttons-->
-        <td>
+        <tr style="color: @ViewBag.ShoppingListColor">
+            <!--Commenting out the ShoppingListID
+            <td>
+                @Html.DisplayFor(modelItem => item.ShoppingListId)
+            </td> End commenting out ShoppingListID-->
+            <!--Adding ShoppingListId to IsChecked-->
+            <td>
+                @Html.DisplayFor(modelItem => item.IsChecked, new {Id = item.ShoppingListItemId})
+            </td>
+        
+            <!--Chris' checkbox
+            <td>
+                <input type="checkbox" name="checked" value="isChecked" />
+            </td>-->
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <!--Commenting out the CreatedUtc and ModifiedUtc
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedUtc)
+            </td>
+            End Commenting out ShoppingListID-->
+            <!--Commenting out the Edit and Details Button
+            @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingListItemId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ShoppingListItemId })
+            End Commenting out the Edit and Details Buttons-->
+            <td>
 
-        @Html.ActionLink("Delete", "Delete", "ShoppingListItem", new { id = item.ShoppingListItemId }, null)
+                @Html.ActionLink("Delete", "Delete", "ShoppingListItem", new { id = item.ShoppingListItemId }, null)
 
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>
+
+@section scripts {
+    <script language="javascript" text="text/javascript">
+        $(document.ready(function() {
+            $("i[data-toggle='checkbox']")
+                .css({ "cursor": "pointer" })
+                .click(function(e) {
+                    var target = $(e.target);
+                    var shoppingListItemId = target.attr("data-id");
+                    var checkboxSet = target.hasClass("glyphicon-ok");
+
+                    $.ajax({
+                            method: checkboxSet ? "DELETE" : "POST",
+                            url: "/api/shoppinglist/" + shoppingListItemId + "/ok",
+                            data: null
+                        })
+                        .done(function(r) {
+                            target.removeClass();
+                            target.addClass("glyphicon" + (checkboxSet ? "glyphicon-unchecked" : "glyphicon-ok"));
+                        })
+                        .fail(function(r) {
+                            alert("Failed to change status");
+                        });
+
+
+                });
+        });
+            
+    </script>
+}
