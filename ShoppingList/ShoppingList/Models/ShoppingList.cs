@@ -16,6 +16,7 @@ namespace ShoppingList.Models
         [MaxLength(25)]
         public string Name { get; set; }
 
+        [RegularExpression(@"^#([A-Fa-f0-9]{6})|[A-Fa-f0-9]{3}$", ErrorMessage = "Please enter a Hex Value.") ]
         public string Color { get; set; }
 
         [Display(Name = "Created")]

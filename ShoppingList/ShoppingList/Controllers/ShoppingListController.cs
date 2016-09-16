@@ -39,6 +39,7 @@ namespace ShoppingList.Controllers
 
         //adding ViewItem to ShoppingListController
 
+        // GET: ViewItem/View
         public ActionResult ViewItem(int? id)
         {
 
@@ -60,6 +61,15 @@ namespace ShoppingList.Controllers
             return View(db.ShoppingListItems.Where(s => s.ShoppingListId == id));
 
         }
+
+        //POST: ViewItem
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult ViewItem([Bind())
+
+        //{
+        //    return 
+        //}
 
 
         // GET: ShoppingListItem/Create
