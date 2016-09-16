@@ -57,6 +57,7 @@ namespace ShoppingList.Controllers
             //return View(shoppingListIndex.ShoppingListItems);
 
             ViewBag.ShoppingListId = id;
+            ViewBag.ListTitle = db.ShoppingLists.Find(id).Name;
             ViewBag.ShoppingListColor = db.ShoppingLists.Find(id).Color; 
             return View(db.ShoppingListItems.Where(s => s.ShoppingListId == id));
 
@@ -76,6 +77,7 @@ namespace ShoppingList.Controllers
         public ActionResult CreateItem(int? id)
         {
             ViewBag.ShoppingListId = id;
+            ViewBag.ListTitle = db.ShoppingLists.Find(id).Name;
             return View();
         }
 

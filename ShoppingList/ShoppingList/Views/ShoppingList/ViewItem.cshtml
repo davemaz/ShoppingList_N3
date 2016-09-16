@@ -1,10 +1,7 @@
 ﻿@model IEnumerable<ShoppingList.Models.ShoppingListItem>
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
+<h2>@ViewBag.ListTitle</h2>
 
 <p>
     @Html.ActionLink("Create New", "CreateItem", new {id = ViewBag.ShoppingListId})
@@ -53,7 +50,7 @@ End Commenting out the CreatedUtc and ModifiedUtc-->
         </td>
         End Commenting out ShoppingListID-->
         <td>
-            <input type="checkbox" name="checked" value="isChecked" checked="checked" />
+            <input type="checkbox" name="checked" value="isChecked" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Content)
@@ -77,22 +74,9 @@ End Commenting out the CreatedUtc and ModifiedUtc-->
                     @Html.ActionLink("Details", "Details", new { id=item.ShoppingListItemId })
         End Commenting out the Edit and Details Buttons-->
         <td>
-<<<<<<< HEAD
-        @Html.ActionLink("Delete", "Delete", new { id = item.ShoppingListItemId })
-=======
-            @Html.DisplayFor(modelItem => item.IsChecked)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedUtc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedUtc)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingListItemId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ShoppingListItemId }) |
-            @Html.ActionLink("Delete", "Delete", "ShoppingListItem", new { id=item.ShoppingListItemId }, null)
->>>>>>> dev
+
+        @Html.ActionLink("Delete", "Delete", "ShoppingListItem", new { id = item.ShoppingListItemId }, null)
+
         </td>
     </tr>
 }
