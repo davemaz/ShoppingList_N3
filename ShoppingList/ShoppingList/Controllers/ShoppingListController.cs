@@ -63,15 +63,19 @@ namespace ShoppingList.Controllers
 
         }
 
-        //POST: ViewItem
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult ViewItem()
+        //POST: UpdateCheckBox
+        [HttpPost]
+        //[ValidateAntiForgeryToken]  //referencing id in order to update IsChecked,creating a new instance of class and calling it "shoppingListItem"
+        public ActionResult UpdateCheckbox([Bind(Include = "ShoppingListItemId, IsChecked")] ShoppingListItem shoppingListItem)
+        {   //pulling data from db and holding it in memory
+            var item = db.ShoppingListItems.Find(shoppingListItem.ShoppingListItemId);
+            //referencing IsChecked on item and converting it to IsChecked on shoppingListItem
+            item.IsChecked = shoppingListItem.IsChecked;
+            //Save changes
+            db.SaveChanges();
+            return Json("success");
+        }
 
-        //{
-        //    var shoppingListItem = new ShoppingListItem()
-        //    return View(shoppingListItem);
-        //}
 
 
         // GET: ShoppingListItem/Create

@@ -47,7 +47,9 @@
             </td> End commenting out ShoppingListID-->
             <!--Adding ShoppingListId to IsChecked-->
             <td>
-                @Html.DisplayFor(modelItem => item.IsChecked, new {Id = item.ShoppingListItemId})
+
+                @Html.CheckBoxFor(modelItem => item.IsChecked, new { id = item.ShoppingListItemId, @class = "itemCheckBoxes" })
+                
             </td>
         
             <!--Chris' checkbox
@@ -87,30 +89,32 @@
 
 @section scripts {
     <script language="javascript" text="text/javascript">
-        $(document).ready(function() {
-            $("i[data-toggle='checkbox']")
-                .css({ "cursor": "pointer" })
-                .click(function(e) {
-                    var target = $(e.target);
-                    var shoppingListItemId = target.attr("data-id");
-                    var checkboxSet = target.hasClass("glyphicon-ok");
+        $(document)
+            .ready(function() {
+                $("input.itemCheckBoxes") //css selector to find elements in page
+                    .css({ "cursor": "pointer" })
+                    .click(function(e) {
+                        var target = $(e.target);
+                        var shoppingListItemId = target.attr("id");
 
-                    $.ajax({
-                            method: checkboxSet ? "DELETE" : "POST",
-                            url: "/api/shoppinglist/" + shoppingListItemId + "/ok",
-                            data: null
-                        })
-                        .done(function(r) {
-                            target.removeClass();
-                            target.addClass("glyphicon" + (checkboxSet ? "glyphicon-unchecked" : "glyphicon-ok"));
-                        })
-                        .fail(function(r) {
-                            alert("Failed to change status");
-                        });
+                        $.ajax({
+                                method: "POST",
+                                url: "/shoppinglist/updatecheckbox",
+                                data: {
+                                    ShoppingListItemId: shoppingListItemId,
+                                    IsChecked: target.is(":checked")
+                                }
+                            })
+                            .done(function(r) {
+                                console.log("finished setting IsChecked - " + r);
+                            })
+                            .fail(function(r) {
+                                alert("Failed to change status");
+                            });
 
 
-                });
-        });
-            
+                    });
+            });
+
     </script>
 }
