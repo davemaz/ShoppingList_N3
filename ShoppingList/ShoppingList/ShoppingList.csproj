@@ -263,6 +263,7 @@
     <Content Include="Views\ShoppingList\ViewItem.cshtml" />
     <Content Include="Views\ShoppingListItem\Index.cshtml" />
     <Content Include="Views\ShoppingList\CreateItem.cshtml" />
+    <Content Include="Views\Shared\IsChecked.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
