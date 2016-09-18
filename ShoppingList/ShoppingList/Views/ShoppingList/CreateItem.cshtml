@@ -7,7 +7,12 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Add Item</h4>
+        <h4>Add Item</h4> 
+        <div class="buttonimage">
+            <div>
+            @Html.ActionLink("Back to List", "ViewItem", new { id = ViewBag.ShoppingListId })
+            </div>
+        </div>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
@@ -27,7 +32,7 @@
                 @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
             </div>
         </div>
-<!--Commenting out the Note,check box, created, and modified
+
         <div class="form-group">
             @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -35,7 +40,7 @@
                 @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
             </div>
         </div>
-
+<!--Commenting out the check box, created, and modified
         <div class="form-group">
             @Html.LabelFor(model => model.IsChecked, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -61,7 +66,7 @@
                 @Html.ValidationMessageFor(model => model.ModifiedUtc, "", new { @class = "text-danger" })
             </div>
         </div>
-Ending commenting out of note, check box, created, and modified-->
+Ending commenting out of check box, created, and modified-->
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
