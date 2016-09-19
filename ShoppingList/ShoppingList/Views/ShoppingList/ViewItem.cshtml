@@ -84,12 +84,16 @@
             @Html.ActionLink("Details", "Details", new { id=item.ShoppingListItemId })
             End Commenting out the Edit and Details Buttons-->
             <td>
-
-                @Html.ActionLink("Delete", "Delete", "ShoppingListItem", new { id = item.ShoppingListItemId }, null)
-
+                
+                @Html.ActionLink("Delete", "Delete", "ShoppingListItem", new { id = item.ShoppingListItemId }, new {@class="btn btn-default"})
+                
             </td>
         </tr>
     }
+<<<<<<< HEAD
+=======
+   
+>>>>>>> dev
 </table>
 
 @section scripts {
