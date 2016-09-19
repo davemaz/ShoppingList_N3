@@ -34,13 +34,13 @@ End Commenting out the Color, CreatedUtc, ModifiedUtc-->
     </tr>
 
 @foreach (var item in Model) {
-    <tr style ="color: @item.Color">
+    <tr>
 <!--Begin Commenting out the UserId
         <td>
             @Html.DisplayFor(modelItem => item.UserId)
         </td>
 End Commenting out the UserID-->
-        <td>
+        <td style="color:@item.Color">
             @Html.DisplayFor(modelItem => item.Name)
         </td>
 <!--Begin Commenting out the Color, CreatedUtc, ModifiedUtc
@@ -55,12 +55,14 @@ End Commenting out the UserID-->
         </td>
 End Commenting out the Color, CreatedUtc, ModifiedUtc-->
         <td>
-            <!--Commenting out Edit, Detail Link           @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingListId }) |
+            <!--Commenting out Edit, Detail Link
+                    @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingListId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.ShoppingListId }) |
         Ending the Commentin for Edit and Details Link-->
-            |
-            @Html.ActionLink("Show", "ViewItem", new { id = item.ShoppingListId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ShoppingListId }) |
+            
+            @Html.ActionLink("Show", "ViewItem", new { id = item.ShoppingListId })  | 
+            @Html.ActionLink("Delete", "Delete", new { id = item.ShoppingListId }) 
+       
         </td>
 </tr>
 }
