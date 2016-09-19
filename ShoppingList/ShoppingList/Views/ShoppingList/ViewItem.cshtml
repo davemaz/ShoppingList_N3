@@ -77,22 +77,7 @@ End Commenting out the CreatedUtc and ModifiedUtc-->
                     @Html.ActionLink("Details", "Details", new { id=item.ShoppingListItemId })
         End Commenting out the Edit and Details Buttons-->
         <td>
-<<<<<<< HEAD
-        @Html.ActionLink("Delete", "Delete", new { id = item.ShoppingListItemId })
-=======
-            @Html.DisplayFor(modelItem => item.IsChecked)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedUtc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedUtc)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingListItemId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ShoppingListItemId }) |
             @Html.ActionLink("Delete", "Delete", "ShoppingListItem", new { id=item.ShoppingListItemId }, null)
->>>>>>> dev
         </td>
     </tr>
 }

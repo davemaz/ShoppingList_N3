@@ -46,7 +46,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr style="color: @item.ShoppingList.Color">
         <td>
             <input type="checkbox" name="checked" value="isChecked" checked="checked" />
         </td>
