@@ -57,25 +57,32 @@ namespace ShoppingList.Controllers
             //return View(shoppingListIndex.ShoppingListItems);
 
             ViewBag.ShoppingListId = id;
+            ViewBag.ListTitle = db.ShoppingLists.Find(id).Name;
             ViewBag.ShoppingListColor = db.ShoppingLists.Find(id).Color; 
             return View(db.ShoppingListItems.Where(s => s.ShoppingListId == id));
 
         }
 
-        //POST: ViewItem
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult ViewItem([Bind())
+        //POST: UpdateCheckBox
+        [HttpPost]
+        //[ValidateAntiForgeryToken]  //referencing id in order to update IsChecked,creating a new instance of class and calling it "shoppingListItem"
+        public ActionResult UpdateCheckbox([Bind(Include = "ShoppingListItemId, IsChecked")] ShoppingListItem shoppingListItem)
+        {   //pulling data from db and holding it in memory
+            var item = db.ShoppingListItems.Find(shoppingListItem.ShoppingListItemId);
+            //referencing IsChecked on item and converting it to IsChecked on shoppingListItem
+            item.IsChecked = shoppingListItem.IsChecked;
+            //Save changes
+            db.SaveChanges();
+            return Json("success");
+        }
 
-        //{
-        //    return 
-        //}
 
 
         // GET: ShoppingListItem/Create
         public ActionResult CreateItem(int? id)
         {
             ViewBag.ShoppingListId = id;
+            ViewBag.ListTitle = db.ShoppingLists.Find(id).Name;
             return View();
         }
 
