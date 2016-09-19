@@ -1,0 +1,93 @@
+﻿@model ShoppingList.Models.ShoppingListItem
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Shopping List Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+<!--Beginning to comment out the UserId
+        <dt>
+=======
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <!--<dt>
+>>>>>>> dev
+            @Html.DisplayNameFor(model => model.ShoppingListId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShoppingListId)
+<<<<<<< HEAD
+        </dd>
+Ending Commenting out the UserID-->
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Priority)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Priority)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+<!--Beginning to comment out the CheckBox, CreatedUtc, ModifiedUtc
+        <dt>
+            @Html.DisplayNameFor(model => model.IsChecked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsChecked)
+        </dd>
+
+        <!--<dt>
+            @Html.DisplayNameFor(model => model.CreatedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUtc)
+<<<<<<< HEAD
+        </dd>
+Ending to comment out the CheckBox, CreatedUtc, ModifiedUtc-->
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ViewItem", "ShoppingList", new {id = Model.ShoppingListId}, null)
+
+        </div>
+    }
+</div>
