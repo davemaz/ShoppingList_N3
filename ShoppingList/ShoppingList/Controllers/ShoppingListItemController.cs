@@ -108,7 +108,7 @@ namespace ShoppingList.Controllers
             ShoppingListItem shoppingListItem = db.ShoppingListItems.Find(id);
             db.ShoppingListItems.Remove(shoppingListItem);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ViewItem", "ShoppingList", new {id = shoppingListItem.ShoppingListId});
         }
 
         protected override void Dispose(bool disposing)

@@ -23,6 +23,7 @@ namespace ShoppingList.Models
         [MaxLength(25)]
         public string Note { get; set; }
 
+        [Display(Name = "Purchased")]
         public bool IsChecked { get; set; }
 
         [Display(Name = "Created")]

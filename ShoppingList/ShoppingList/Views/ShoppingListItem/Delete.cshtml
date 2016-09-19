@@ -8,18 +8,30 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
+<<<<<<< HEAD
     <h4>Shopping List Item</h4>
     <hr />
     <dl class="dl-horizontal">
 <!--Beginning to comment out the UserId
         <dt>
+=======
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <!--<dt>
+>>>>>>> dev
             @Html.DisplayNameFor(model => model.ShoppingListId)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ShoppingListId)
+<<<<<<< HEAD
         </dd>
 Ending Commenting out the UserID-->
+=======
+        </dd>-->
+
+>>>>>>> dev
         <dt>
             @Html.DisplayNameFor(model => model.Content)
         </dt>
@@ -52,7 +64,7 @@ Ending Commenting out the UserID-->
             @Html.DisplayFor(model => model.IsChecked)
         </dd>
 
-        <dt>
+        <!--<dt>
             @Html.DisplayNameFor(model => model.CreatedUtc)
         </dt>
 
@@ -66,8 +78,13 @@ Ending Commenting out the UserID-->
 
         <dd>
             @Html.DisplayFor(model => model.ModifiedUtc)
+<<<<<<< HEAD
         </dd>
 Ending to comment out the CheckBox, CreatedUtc, ModifiedUtc-->
+=======
+        </dd>-->
+
+>>>>>>> dev
     </dl>
 
     @using (Html.BeginForm())
@@ -76,9 +93,8 @@ Ending to comment out the CheckBox, CreatedUtc, ModifiedUtc-->
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "ViewItem", "ShoppingList", new {id = Model.ShoppingListId}, null)
 
-           <!--"ViewItem", "ShoppingList", new { id = ViewBag.ShoppingListId }, null)-->
         </div>
     }
 </div>
