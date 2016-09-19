@@ -34,3 +34,20 @@ body
     {
     background-color:#d1e0e0;
 }
+
+.buttonimage {
+    background-color: white; 
+    border: thick;
+    color: #317eac;
+    padding: 10px 15px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    padding-left:80%
+}
+.footer {
+    position:relative;
+    width:100%;
+    text-align:center;
+    color:white;
+}

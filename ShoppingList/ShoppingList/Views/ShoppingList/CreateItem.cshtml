@@ -7,10 +7,17 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+
         <h2>@ViewBag.ListTitle</h2>
-        <h4>Add Item</h4>
-        <hr/>
-        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        <h4>Add Item</h4> 
+        <div class="buttonimage">
+            <div>
+            @Html.ActionLink("Back to List", "ViewItem", new { id = ViewBag.ShoppingListId })
+            </div>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
 
 
         <div class="form-group">
@@ -37,7 +44,8 @@
             </div>
         </div>
 
-        <!--Commenting out the check box, created, and modified
+<!--Commenting out the check box, created, and modified
+
         <div class="form-group">
             @Html.LabelFor(model => model.IsChecked, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
@@ -63,7 +71,9 @@
                 @Html.ValidationMessageFor(model => model.ModifiedUtc, "", new {@class = "text-danger"})
             </div>
         </div>
+
         Ending commenting out of note, check box, created, and modified-->
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default"/>

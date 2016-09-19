@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<ShoppingList.Models.ShoppingListItem>
 
 
-<h2>@ViewBag.ListTitle</h2>
+
+<h2>@ViewBag.ListTitle Shopping List</h2>
 
 <p>
     @Html.ActionLink("Create New", "CreateItem", new {id = ViewBag.ShoppingListId})
@@ -84,6 +85,7 @@
             </td>
         </tr>
     }
+
 
 </table>
 
