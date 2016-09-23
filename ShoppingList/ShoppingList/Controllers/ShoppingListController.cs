@@ -40,13 +40,23 @@ namespace ShoppingList.Controllers
         //adding ViewItem to ShoppingListController
 
         // GET: ViewItem/View
-        public ActionResult ViewItem(int? id)
+        public ActionResult ViewItem(int? id, string search)
         {
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            var searchResults = from i in db.ShoppingListItems
+                                select i;
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                searchResults = db.ShoppingListItems.Where(s => s.Content.ToLower().Contains(search) || s.Note.ToLower().Contains(search));
+                ViewBag.Search = search;
+                return View(searchResults);
+            }
+
             //shoppinglistitems, reference shoppinglistitems in db with shoppinglistIDs that match that id submitted
             //Models.ShoppingList shoppingListIndex = db.ShoppingLists.Find(id);
             //if (shoppingListIndex == null)
@@ -60,7 +70,6 @@ namespace ShoppingList.Controllers
             ViewBag.ListTitle = db.ShoppingLists.Find(id).Name;
             ViewBag.ShoppingListColor = db.ShoppingLists.Find(id).Color; 
             return View(db.ShoppingListItems.Where(s => s.ShoppingListId == id));
-
         }
 
         //POST: UpdateCheckBox
