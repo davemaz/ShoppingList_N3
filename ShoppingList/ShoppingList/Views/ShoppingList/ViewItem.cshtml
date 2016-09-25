@@ -5,14 +5,18 @@
 <h2>@ViewBag.ListTitle Shopping List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateItem", new {id = ViewBag.ShoppingListId})
+    @Html.ActionLink("Create New", "CreateItem", new { id = ViewBag.ShoppingListId })
     
 </p>
 
 <form asp-controller="Movies" asp-action="ViewItem">
     <p>
         Content or Note: <input type="text" name="Search" value=@ViewBag.Search />
-        <input type="submit" value="Search" />
+        <input type="submit" class="btn btn-primary" value="Search" />
+        @if (ViewBag.Search != null)
+        {
+            @Html.ActionLink("Clear", "ViewItem", null, new {@class = "btn btn-default"})
+        }
     </p>
 </form>
 <table class="table">
