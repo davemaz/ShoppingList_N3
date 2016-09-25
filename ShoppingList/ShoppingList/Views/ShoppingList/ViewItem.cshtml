@@ -8,6 +8,13 @@
     @Html.ActionLink("Create New", "CreateItem", new {id = ViewBag.ShoppingListId})
     
 </p>
+
+<form asp-controller="Movies" asp-action="ViewItem">
+    <p>
+        Content or Note: <input type="text" name="Search" value=@ViewBag.Search />
+        <input type="submit" value="Search" />
+    </p>
+</form>
 <table class="table">
     <tr>
         <!--Commenting out the ShoppingListID
