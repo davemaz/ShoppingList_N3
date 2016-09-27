@@ -88,12 +88,12 @@
                 @Html.DisplayFor(modelItem => item.ModifiedUtc)
             </td>
             End Commenting out ShoppingListID-->
-            <!--Commenting out the Edit and Details Button
-            @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingListItemId }) |
+            <!--Commenting out the Details Button
             @Html.ActionLink("Details", "Details", new { id=item.ShoppingListItemId })
-            End Commenting out the Edit and Details Buttons-->
+            End Commenting out the Details Buttons-->
             <td>
                 
+                @Html.ActionLink("Edit", "Edit", "ShoppingListItem", new { id=item.ShoppingListItemId }, new {@class = "btn btn-default"}) 
                 @Html.ActionLink("Delete", "Delete", "ShoppingListItem", new { id = item.ShoppingListItemId }, new {@class="btn btn-default"})
                 
             </td>
