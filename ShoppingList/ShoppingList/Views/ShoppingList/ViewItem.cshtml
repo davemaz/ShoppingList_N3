@@ -5,7 +5,7 @@
 <h2>@ViewBag.ListTitle Shopping List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateItem", new {id = ViewBag.ShoppingListId})
+    @Html.ActionLink("Create New", "CreateItem", new { id = ViewBag.ShoppingListId })
     
 </p>
 
@@ -15,7 +15,7 @@
         <input class="btn btn-default btn-sm" type="submit" value="Search" />
         @if (ViewBag.Search != null)
         {
-            @Html.ActionLink("Clear", "ViewItem", null, new { @class="btn btn-default btn-sm"})
+            @Html.ActionLink("Clear", "ViewItem", null, new { @class = "btn btn-default btn-sm" })
         }
     </p>
 </form>
@@ -25,8 +25,6 @@
         <th>
             @Html.DisplayNameFor(model => model.ShoppingListId)
         </th>
-<<<<<<< HEAD
-=======
         End Commenting out ShoppingListID-->
 
         <th>
