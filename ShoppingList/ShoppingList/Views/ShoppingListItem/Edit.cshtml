@@ -7,7 +7,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "ShoppingListItem", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -49,29 +49,20 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsChecked, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsChecked)
-                    @Html.ValidationMessageFor(model => model.IsChecked, "", new { @class = "text-danger" })
+        @if(Model.Files.Any(f => f.FileType == ShoppingList.Models.FileType.Photo))
+        {
+            <div class="form-group">
+                <span class="control-label col-md-2"><strong>Image</strong></span>
+                <div class="col-md-10">
+                    <img width="100" src="~/File?id=@Model.Files.First(f => f.FileType == ShoppingList.Models.FileType.Photo).FileId" alt="Image" />
                 </div>
             </div>
-        </div>
+        }
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CreatedUtc, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("New Image", new { @class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedUtc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedUtc, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModifiedUtc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ModifiedUtc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ModifiedUtc, "", new { @class = "text-danger" })
+                <input type="file" id="Photo" name="upload" />
             </div>
         </div>
 

@@ -176,13 +176,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609161503179_initial.cs" />
-    <Compile Include="Migrations\201609161503179_initial.Designer.cs">
-      <DependentUpon>201609161503179_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609281408556_Files.cs" />
-    <Compile Include="Migrations\201609281408556_Files.Designer.cs">
-      <DependentUpon>201609281408556_Files.cs</DependentUpon>
+    <Compile Include="Migrations\201609282004356_init.cs" />
+    <Compile Include="Migrations\201609282004356_init.Designer.cs">
+      <DependentUpon>201609282004356_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -197,10 +193,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-ShoppingList-20160909104954.mdf" />
-    <Content Include="App_Data\aspnet-ShoppingList-20160909104954_log.ldf">
-      <DependentUpon>aspnet-ShoppingList-20160909104954.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapOldVersion.css" />
@@ -263,15 +255,16 @@
     <Content Include="Views\ShoppingList\Details.cshtml" />
     <Content Include="Views\ShoppingList\Edit.cshtml" />
     <Content Include="Views\ShoppingList\Index.cshtml" />
+    <Content Include="Views\ShoppingList\ViewItem.cshtml" />
+    <Content Include="Views\ShoppingList\CreateItem.cshtml" />
     <Content Include="Views\ShoppingListItem\Create.cshtml" />
     <Content Include="Views\ShoppingListItem\Delete.cshtml" />
     <Content Include="Views\ShoppingListItem\Details.cshtml" />
     <Content Include="Views\ShoppingListItem\Edit.cshtml" />
-    <Content Include="Views\ShoppingList\ViewItem.cshtml" />
     <Content Include="Views\ShoppingListItem\Index.cshtml" />
-    <Content Include="Views\ShoppingList\CreateItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
@@ -283,11 +276,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609161503179_initial.resx">
-      <DependentUpon>201609161503179_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609281408556_Files.resx">
-      <DependentUpon>201609281408556_Files.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609282004356_init.resx">
+      <DependentUpon>201609282004356_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
