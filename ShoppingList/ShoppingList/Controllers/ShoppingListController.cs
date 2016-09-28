@@ -1,7 +1,9 @@
 ﻿using ShoppingList.Models;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 
 
@@ -47,6 +49,8 @@ namespace ShoppingList.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+            ShoppingListItem item = db.ShoppingListItems.Include(s => s.Files).SingleOrDefault(s => s.ShoppingListItemId == id);
+
             var searchResults = from i in db.ShoppingListItems
                                 select i;
 
@@ -68,7 +72,7 @@ namespace ShoppingList.Controllers
 
             ViewBag.ShoppingListId = id;
             ViewBag.ListTitle = db.ShoppingLists.Find(id).Name;
-            ViewBag.ShoppingListColor = db.ShoppingLists.Find(id).Color; 
+            ViewBag.ShoppingListColor = db.ShoppingLists.Find(id).Color;
             return View(db.ShoppingListItems.Where(s => s.ShoppingListId == id));
         }
 
@@ -102,10 +106,26 @@ namespace ShoppingList.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateItem([Bind(Include = "ShoppingListItemId,ShoppingListId," +
                                                        "Content,Priority,Note,IsChecked,CreatedUtc,ModifiedUtc")]
-                                                        ShoppingListItem shoppingListItem, int id)
+                                                        ShoppingListItem shoppingListItem, int id, HttpPostedFileBase upload)
         {   //added parameter int id to "create".
             if (ModelState.IsValid)
-            {   //add shoppinglistitems to a particular list prior to "add"
+            {   
+                if(upload != null && upload.ContentLength > 0)
+                {
+                    var photo = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Photo,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        photo.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    shoppingListItem.Files = new List<File> { photo };
+
+                }
+                //add shoppinglistitems to a particular list prior to "add"
                 shoppingListItem.ShoppingListId = id;
                 db.ShoppingListItems.Add(shoppingListItem);
                 db.SaveChanges();

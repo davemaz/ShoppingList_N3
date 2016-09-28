@@ -49,7 +49,8 @@
             @Html.DisplayNameFor(model => model.ModifiedUtc)
         </th>
         End Commenting out the CreatedUtc and ModifiedUtc-->
-        <th></th>
+        <th>Image</th>
+        <th>Options</th>
     </tr>
 
     @foreach (var item in Model)
@@ -91,6 +92,12 @@
             <!--Commenting out the Details Button
             @Html.ActionLink("Details", "Details", new { id=item.ShoppingListItemId })
             End Commenting out the Details Buttons-->
+            <td>
+                @if (item.Files.Any(f => f.FileType == ShoppingList.Models.FileType.Photo))
+                {
+                    <img width="100" src="~/File?id=@item.Files.First(f => f.FileType == ShoppingList.Models.FileType.Photo).FileId" alt="Image" />
+                }
+            </td>
             <td>
                 
                 @Html.ActionLink("Edit", "Edit", "ShoppingListItem", new { id=item.ShoppingListItemId }, new {@class = "btn btn-default"}) 

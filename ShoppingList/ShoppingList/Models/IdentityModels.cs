@@ -35,6 +35,8 @@ namespace ShoppingList.Models
 
         public DbSet<ShoppingListItem> ShoppingListItems { get; set; }
 
+        public DbSet<File> Files { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

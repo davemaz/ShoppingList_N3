@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Add Item</h2>
+<h2>Create</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,18 +12,17 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        
+        <h4>ShoppingListItem</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-<!--Commenting out the ShoppingListID
         <div class="form-group">
-            @Html.LabelFor(model => model.ShoppingListId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ShoppingListId, "ShoppingListId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ShoppingListId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("ShoppingListId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ShoppingListId, "", new { @class = "text-danger" })
             </div>
         </div>
-Ending Commenting out the ShoppingListID-->
+
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -31,6 +30,7 @@ Ending Commenting out the ShoppingListID-->
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -38,7 +38,7 @@ Ending Commenting out the ShoppingListID-->
                 @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
             </div>
         </div>
-<!--Commmeting out the Text Fields we dont need
+
         <div class="form-group">
             @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -72,10 +72,10 @@ Ending Commenting out the ShoppingListID-->
                 @Html.ValidationMessageFor(model => model.ModifiedUtc, "", new { @class = "text-danger" })
             </div>
         </div>
-End Commenting out the text fields we are not using-->
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>

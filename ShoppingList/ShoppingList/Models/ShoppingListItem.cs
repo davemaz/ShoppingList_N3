@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,6 +38,8 @@ namespace ShoppingList.Models
         }
         
         public virtual ShoppingList ShoppingList { get; set; }
+
+        public virtual ICollection<File> Files { get; set; }
 
     }
 }
